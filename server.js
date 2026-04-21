@@ -16,12 +16,13 @@ app.set("views", "views");
 app.set("view engine", "ejs");
 
 // 4: Router codelari
-app.get("/Hello", function (req, res) { 
-    res.end("<h1 style='background-color: red;'>Hello World by Nathan</h1>");
-}); 
+app.post("/create-item", function (req, res) {
+    console.log(req.body);
+    res.json({ test: "Item created successfully" });
+});
 
-app.get("/gift", function (req, res) { 
-    res.end("<h1 style='background-color: red;'>you got a gift!</h1>");
+app.get("/", function (req, res) {
+    res.render("harid");
 });
 
 const server = http.createServer(app);
