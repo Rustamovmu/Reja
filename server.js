@@ -3,6 +3,19 @@ const express = require("express");
 const app = express();
 const PORT = 3000;
 const http = require("http");
+const fs = require("fs");
+
+let user;
+fs.readFile("database/user.json", "utf-8", function (err, data) {
+    if (err) {
+        console.log("ERROR:", err);
+        return;
+    } else {
+        user = JSON.parse(data)
+    }
+});
+        
+        
 
 // 1: Kirish codelari
 app.use(express.static("public"));
@@ -21,6 +34,12 @@ app.post("/create-item", function (req, res) {
     res.json({ test: "Item created successfully" });
 });
 
+app.get("/author", function (req, res) {
+    res.render("author", {
+        user: user
+    });
+});
+
 app.get("/", function (req, res) {
     res.render("harid");
 });
@@ -28,4 +47,4 @@ app.get("/", function (req, res) {
 const server = http.createServer(app);
 server.listen(PORT, function ()  {
     console.log(`Server is running successfully on port ${PORT}`);
-});  
+});
