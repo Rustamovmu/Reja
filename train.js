@@ -1,13 +1,37 @@
-console.log("Trainingni boshlash");
-// lesson 21 & 22 asynchronous programming, callback functions
-const list = [
-    "yahshi talaba boling!", //0-20
-    "togri boshliq tanlang va koproq xato qiling!", //20-30
-    "ozingizga ishlashni boshlang!",//30-40 
-    "siz kuchli bolgan narsa ustida ishlang!",//40-50
-    "yoshlarga yordam bering!", //50-60
-    "toxtab qolmang, endi jamiyat uchun ishlashni boshlang!", //60
-];
+// MITASK-A
+
+// Harf sifatida kiritilgan birinchi parametr, 
+// kiritilgan ikkinchi parametr tarkibida nechta ekanligini qaytaruvchi
+// Funktsiya tuzing
+
+// Masalan: countLetter("e", "engineer")
+// 'engineer' so'zi tarkibida 'e' harfi 3 marotaba takrorlanganligi uchun
+// 3 sonini qaytaradi
+// let count= 0;
+// function countLetter(letter, word) {
+//     for (let i = 0; i < word.length; i++) {
+//         if (word[i] === letter) {
+//             count++;
+//         }
+//     }
+//     return count;
+// }
+
+// console.log(countLetter("e", "engineer"));
+
+
+
+
+// console.log("Trainingni boshlash");
+// // lesson 21 & 22 asynchronous programming, callback functions
+// const list = [
+//     "yahshi talaba boling!", //0-20
+//     "togri boshliq tanlang va koproq xato qiling!", //20-30
+//     "ozingizga ishlashni boshlang!",//30-40 
+//     "siz kuchli bolgan narsa ustida ishlang!",//40-50
+//     "yoshlarga yordam bering!", //50-60
+//     "toxtab qolmang, endi jamiyat uchun ishlashni boshlang!", //60
+// ];
 
 // function maslahatchi(a, callback) {
 //     if (typeof a !== "number") callback("Iltimos, yoshni raqam bilan kiriting!", null);
@@ -99,3 +123,7 @@ const list = [
 //     else console.log(data);
 // });
 // console.log("1");
+
+
+
+
