@@ -1,50 +1,29 @@
-console.log("web Serverni boshlash");
-const express = require("express");
-const app = express();
-const PORT = 3000;
 const http = require("http");
-const fs = require("fs");
+const PORT = 3000;
+const mongodb = require("mongodb");
 
-let user;
-fs.readFile("database/user.json", "utf-8", function (err, data) {
+let db;
+const connectionString = "mongodb+srv://rustamov_m_u:Muhammadumar2004$@cluster0.1tginhv.mongodb.net/?appName=Cluster0&authSource=admin&replicaSet=atlas-1l7j8c-shard-0&w=majority";
+
+mongodb.connect(connectionString, {
+     useNewUrlParser: true, 
+     useUnifiedTopology: true 
+    }, function(err, client) {
     if (err) {
-        console.log("ERROR:", err);
-        return;
+        console.log("MongoDB connection error:", err);
     } else {
-        user = JSON.parse(data)
+        console.log("MongoDB connected successfully");
+        module.exports = client;
+        const app = require("./app");
+        const server = http.createServer(app);
+        server.listen(PORT, function ()  {
+            console.log(`Server is running successfully on port ${PORT}, http://localhost:${PORT}`
+            );
+        });
     }
 });
-        
-        
-
-// 1: Kirish codelari
-app.use(express.static("public"));
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-
-// 2: Session code
-
-// 3: views codelari
-app.set("views", "views");
-app.set("view engine", "ejs");
-
-// 4: Router codelari
-app.post("/create-item", function (req, res) {
-    console.log(req.body);
-    res.json({ test: "Item created successfully" });
-});
-
-app.get("/author", function (req, res) {
-    res.render("author", {
-        user: user
-    });
-});
-
-app.get("/", function (req, res) {
-    res.render("Reja");
-});
-
-const server = http.createServer(app);
-server.listen(PORT, function ()  {
-    console.log(`Server is running successfully on port ${PORT}, http://localhost:${PORT}`);
-});
+    
+// const server = http.createServer(app);
+// server.listen(PORT, function ()  {
+//     console.log(`Server is running successfully on port ${PORT}, http://localhost:${PORT}`);
+     
