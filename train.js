@@ -1,3 +1,16 @@
+// MITASK B
+let count= 0;
+function countNumbers(word) {
+    for (let i = 0; i < word.length; i++) {
+        if (word[i] === String(Number(word[i]))) {
+            count++;
+        }
+    }
+    return count;
+}
+
+console.log(countNumbers("e3ng4in1e34er"));
+
 // MITASK-A
 
 // Harf sifatida kiritilgan birinchi parametr, 
