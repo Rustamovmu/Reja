@@ -3,7 +3,7 @@ const PORT = 3000;
 const mongodb = require("mongodb");
 
 let db;
-const connectionString = "mongodb+srv://rustamov_m_u:Muhammadumar2004$@cluster0.1tginhv.mongodb.net/?appName=Cluster0&authSource=admin&replicaSet=atlas-1l7j8c-shard-0&w=majority";
+const connectionString = "mongodb+srv://rustamov_m_u:FGHDRJOJxinRTTHQ@cluster0.1tginhv.mongodb.net/?appName=Cluster0&authSource=admin&replicaSet=atlas-1l7j8c-shard-0&w=majority";
 
 mongodb.connect(connectionString, {
      useNewUrlParser: true, 

@@ -33,8 +33,18 @@ app.set("view engine", "ejs");
 
 // 4: Router codelari
 app.post("/create-item", function (req, res) {
-    console.log(req.body);
-    res.json({ test: "Item created successfully" });
+    console.log("user entered /create-item");
+    // console.log(req.body);
+    const new_reja = req.body.reja;
+    db.collection("plans").insertOne({ reja: new_reja }, function (err, data) {
+        if (err) {
+            console.log("Error inserting plan:", err);
+            res.end("something went wrong");
+        } else {
+            console.log("Plan inserted successfully:", data);
+            // res.redirect("/");
+        }
+    });
 });
 
 app.get("/author", function (req, res) {
@@ -44,7 +54,17 @@ app.get("/author", function (req, res) {
 });
 
 app.get("/", function (req, res) {
-    res.render("Reja");
+    console.log("user entered /")
+    db.collection("plans").find().toArray(function (err, data) {
+        if (err) {
+            console.log("Error fetching plans:", err);
+            res.end("something went wrong");
+        } else {
+            res.render("Reja", {
+                items: data
+            });
+        }
+    });
 });
 
 module.exports = app;
