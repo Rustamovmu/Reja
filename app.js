@@ -42,7 +42,7 @@ app.post("/create-item", function (req, res) {
             res.end("something went wrong");
         } else {
             console.log("Plan inserted successfully:", data);
-            // res.redirect("/");
+            res.redirect("/");
         }
     });
 });
