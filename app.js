@@ -18,6 +18,7 @@ fs.readFile("database/user.json", "utf-8", function (err, data) {
 
 // MongoDB chaqirish
 const db = require("./server").db();
+const mongodb = require("mongodb");
         
 
 // 1: Kirish codelari
@@ -37,14 +38,17 @@ app.post("/create-item", function (req, res) {
     // console.log(req.body);
     const new_reja = req.body.reja;
     db.collection("plans").insertOne({ reja: new_reja }, function (err, data) {
-        if (err) {
-            console.log("Error inserting plan:", err);
-            res.end("something went wrong");
-        } else {
-            console.log("Plan inserted successfully:", data);
-            res.redirect("/");
-        }
+       console.log(data.ops);
+       res.json({ _id: data.insertedId, reja: new_reja });
     });
+});
+
+app.post("/delete-item", function (req, res) {
+    const id = req.body.id;
+    db.collection("plans").deleteOne({ _id: new mongodb.ObjectId(id) }, function (err, data) {
+        res.json({ state: "success" });
+    });
+
 });
 
 app.get("/author", function (req, res) {
