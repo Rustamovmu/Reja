@@ -1,15 +1,107 @@
-// MITASK B
-let count= 0;
-function countNumbers(word) {
-    for (let i = 0; i < word.length; i++) {
-        if (word[i] === String(Number(word[i]))) {
-            count++;
+// Task-c
+// TASK-C
+
+// Shop nomli class tuzing, va bu class 3 xill parametr qabul qilsin.
+// Hamda classning quyidagdek 3'ta metodi bo'lsin:
+
+// 1) qoldiq
+// 2) sotish
+// 3) qabul
+
+// Har bir metod ishga tushgan vaqtda log qilinsin
+
+// MASALAN:
+// const shop = new Shop(4, 5, 2)
+
+// shop.qoldiq();
+// natija qaytishi kerak: Hozir 20: 40'da 4'ta non, 5'ta lag'mon va 2'ta cola mavjud
+
+// shop.sotish("non", 3); & shop.qabul("cola", 4); & shop.qoldiq();
+// Natija qaytishi kerak: Hozir 20:50da 1ta non, 5ta lag'mon va 6ta cola mavjud!
+const e = require("express");
+const moment = require("moment");
+// const now = moment().format("HH:mm");
+class Shop  {
+    constructor(non, lagman, cola) {
+        this.non = non;
+        this.lagman = lagman;
+        this.cola = cola;
+    }
+   
+    qoldiq() {
+        const now = moment().format("HH:mm");
+        console.log(`Hozir ${now}da ${this.non}ta non, ${this.lagman}ta lag'mon va ${this.cola}ta cola mavjud`);
+        
+    }
+
+    sotish(food, amount) {
+        if (food === "non") {
+            if (this.non >= amount) {
+                this.non -= amount;
+                this.qoldiq();
+            } else {
+                console.log("Non yetarli emas");
+            }
+        } else if (food === "lagman") {
+            if (this.lagman >= amount) {
+                this.lagman -= amount;
+                this.qoldiq();
+            } else {
+                console.log("Lag'mon yetarli emas");
+            }
+        } else if (food === "cola") {
+            if (this.cola >= amount) {
+                this.cola -= amount;
+                this.qoldiq();
+            } else {
+                console.log("Cola yetarli emas");
+            }
+        } else {
+            console.log("Bunday ovqat mavjud emas");
+        }
+        
+    }
+
+    qabul(food, amount) {
+        if (food === "non"){
+            this.non += amount;
+            this.qoldiq();
+        } else if (food === "lagman"){
+            this.lagman += amount;
+            this.qoldiq();
+        } else if (food === "cola"){
+            this.cola += amount;
+            this.qoldiq();
+        }else {
+            console.log("Bunday ovqat sotib olinmaydi");
         }
     }
-    return count;
 }
 
-console.log(countNumbers("e3ng4in1e34er"));
+
+const chop1 = new Shop(3, 4, 3);
+chop1.qoldiq();
+chop1.sotish("cola",2);
+chop1.sotish("non", 2);
+chop1.qabul("cola", 12);
+chop1.qabul("non", 5);
+chop1.sotish("cola", 66);
+chop1.qabul("shashlik", 5);
+chop1.sotish("manti", 4);
+chop1.sotish("olma", 4);
+// chop1.qoldiq();
+// // MITASK B
+// let count= 0;
+// function countNumbers(word) {
+//     for (let i = 0; i < word.length; i++) {
+//         if (word[i] === String(Number(word[i]))) {
+//             count++;
+//         }
+//     }
+//     return count;
+// }
+
+// console.log(countNumbers("e3n457g4i-2n1e34er"));
 
 // MITASK-A
 
