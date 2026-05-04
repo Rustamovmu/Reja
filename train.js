@@ -1,3 +1,24 @@
+// TASK D
+
+// Ikkita parametra ega function tuzing, va functioning berilgan birinchi va 
+// ikkinchi parametr qiymatlari o'zaro to'liq mos kelsa true qiymat qaytarsin.
+
+// Masalan: checkContent("mitgroup", "gmtiprou") return true
+
+function checkContent(str1, str2) {
+   
+    const sortedStr1 = str1.split("").sort().join("");
+    const sortedStr2 = str2.split("").sort().join("");
+    if  (sortedStr1 === sortedStr2) return true; 
+    else return false;
+        
+}
+
+const a = checkContent("ali", "ila");
+console.log(a)
+
+
+
 // Task-c
 // TASK-C
 
@@ -18,77 +39,77 @@
 
 // shop.sotish("non", 3); & shop.qabul("cola", 4); & shop.qoldiq();
 // Natija qaytishi kerak: Hozir 20:50da 1ta non, 5ta lag'mon va 6ta cola mavjud!
-const e = require("express");
-const moment = require("moment");
-// const now = moment().format("HH:mm");
-class Shop  {
-    constructor(non, lagman, cola) {
-        this.non = non;
-        this.lagman = lagman;
-        this.cola = cola;
-    }
+// const e = require("express");
+// const moment = require("moment");
+// // const now = moment().format("HH:mm");
+// class Shop  {
+//     constructor(non, lagman, cola) {
+//         this.non = non;
+//         this.lagman = lagman;
+//         this.cola = cola;
+//     }
    
-    qoldiq() {
-        const now = moment().format("HH:mm");
-        console.log(`Hozir ${now}da ${this.non}ta non, ${this.lagman}ta lag'mon va ${this.cola}ta cola mavjud`);
+//     qoldiq() {
+//         const now = moment().format("HH:mm");
+//         console.log(`Hozir ${now}da ${this.non}ta non, ${this.lagman}ta lag'mon va ${this.cola}ta cola mavjud`);
         
-    }
+//     }
 
-    sotish(food, amount) {
-        if (food === "non") {
-            if (this.non >= amount) {
-                this.non -= amount;
-                this.qoldiq();
-            } else {
-                console.log("Non yetarli emas");
-            }
-        } else if (food === "lagman") {
-            if (this.lagman >= amount) {
-                this.lagman -= amount;
-                this.qoldiq();
-            } else {
-                console.log("Lag'mon yetarli emas");
-            }
-        } else if (food === "cola") {
-            if (this.cola >= amount) {
-                this.cola -= amount;
-                this.qoldiq();
-            } else {
-                console.log("Cola yetarli emas");
-            }
-        } else {
-            console.log("Bunday ovqat mavjud emas");
-        }
+//     sotish(food, amount) {
+//         if (food === "non") {
+//             if (this.non >= amount) {
+//                 this.non -= amount;
+//                 this.qoldiq();
+//             } else {
+//                 console.log("Non yetarli emas");
+//             }
+//         } else if (food === "lagman") {
+//             if (this.lagman >= amount) {
+//                 this.lagman -= amount;
+//                 this.qoldiq();
+//             } else {
+//                 console.log("Lag'mon yetarli emas");
+//             }
+//         } else if (food === "cola") {
+//             if (this.cola >= amount) {
+//                 this.cola -= amount;
+//                 this.qoldiq();
+//             } else {
+//                 console.log("Cola yetarli emas");
+//             }
+//         } else {
+//             console.log("Bunday ovqat mavjud emas");
+//         }
         
-    }
+//     }
 
-    qabul(food, amount) {
-        if (food === "non"){
-            this.non += amount;
-            this.qoldiq();
-        } else if (food === "lagman"){
-            this.lagman += amount;
-            this.qoldiq();
-        } else if (food === "cola"){
-            this.cola += amount;
-            this.qoldiq();
-        }else {
-            console.log("Bunday ovqat sotib olinmaydi");
-        }
-    }
-}
+//     qabul(food, amount) {
+//         if (food === "non"){
+//             this.non += amount;
+//             this.qoldiq();
+//         } else if (food === "lagman"){
+//             this.lagman += amount;
+//             this.qoldiq();
+//         } else if (food === "cola"){
+//             this.cola += amount;
+//             this.qoldiq();
+//         }else {
+//             console.log("Bunday ovqat sotib olinmaydi");
+//         }
+//     }
+// }
 
 
-const chop1 = new Shop(3, 4, 3);
-chop1.qoldiq();
-chop1.sotish("cola",2);
-chop1.sotish("non", 2);
-chop1.qabul("cola", 12);
-chop1.qabul("non", 5);
-chop1.sotish("cola", 66);
-chop1.qabul("shashlik", 5);
-chop1.sotish("manti", 4);
-chop1.sotish("olma", 4);
+// const chop1 = new Shop(3, 4, 3);
+// chop1.qoldiq();
+// chop1.sotish("cola",2);
+// chop1.sotish("non", 2);
+// chop1.qabul("cola", 12);
+// chop1.qabul("non", 5);
+// chop1.sotish("cola", 66);
+// chop1.qabul("shashlik", 5);
+// chop1.sotish("manti", 4);
+// chop1.sotish("olma", 4);
 // chop1.qoldiq();
 // // MITASK B
 // let count= 0;
