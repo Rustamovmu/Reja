@@ -14,7 +14,7 @@ function checkContent(str1, str2) {
         
 }
 
-const a = checkContent("ali", "ila");
+const a = checkContent("mitgroup", "gmtiprou");
 console.log(a)
 
 

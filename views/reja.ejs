@@ -35,7 +35,7 @@
             </form>
         </div>
 
-        <!-- <%= items[1].reja %> -->
+       
         <ul id="item-list" class="list-group mb-5">
             <% items.map(function(item) { %>
             <li 
@@ -43,7 +43,9 @@
            >
                 <span class="item-text"><%= item.reja%></span>
                 <div>
-                   <button data-id="<%=item._id%>" class="edit-me edit-me> edit-item btn btn-secondary btn-sm me-2" style="border-radius: 25px; padding: 5px 15px">
+                   <button 
+                        data-id="<%=item._id%>" 
+                        class="edit-me btn btn-secondary btn-sm mr-1" style="border-radius: 25px; padding: 5px 15px">
                        Edit
                     </button>
                     <button data-id="<%=item._id%>" class="delete-me delete-item btn btn-danger btn-sm" style="border-radius: 25px; padding: 5px 15px">

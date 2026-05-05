@@ -1,67 +1,111 @@
-console.log("browser.js is running");
+
+console.log('====================================');
+console.log("Front-end JS is running");
+console.log('====================================');
+
 
 function itemTemplate(item) {
-    return `
-        <li 
-                class="list-group-item list-group-item-info d-flex align-items-center justify-content-between"
-           >
-                <span class="item-text">${item.reja}</span>
-                <div>
-                   <button data-id="${item._id}" class="edit-item btn btn-secondary btn-sm me-2" style="border-radius: 25px; padding: 5px 15px">
+    // console.log("html func")
+    // console.log("id", item._id)
+    return `<li class="list-group-item list-group-item-info d-flex align-items-center justify-content-between">
+                    <span class="item-text">
+                        ${item.reja}
+                    </span>
+                    <div>
+                        <button 
+                        data-id="${item._id}" 
+                        class="edit-me btn btn-secondary btn-sm mr-1" style="border-radius: 25px; padding: 5px 15px">
                        Edit
                     </button>
-                    <button data-id="${item._id}" class="delete-item btn btn-danger btn-sm" style="border-radius: 25px; padding: 5px 15px">
+                    <button data-id="${item._id}" class="delete-me delete-item btn btn-danger btn-sm" style="border-radius: 25px; padding: 5px 15px">
                       Delete
                     </button>
-                </div>
-            </li>
-    `;
+                    </div>
+                </li>`
 }
-let createField = document.getElementById("create-field");
-document
-    .getElementById("create-form")
-    .addEventListener("submit", function (e) {
-        e.preventDefault();
 
-        axios
-            .post("/create-item", { reja: createField.value  })
-            .then(function (response) {
-                document.getElementById("item-list").insertAdjacentHTML(
-                    "beforeend",
-                    itemTemplate(response.data)
-                );
-                createField.value = "";
-                createField.focus();
-            })
-            .catch(function (err) {
-                console.log("Iltimos, keyinroq qayta urinib ko'ring!");
-            });
+
+let createField = document.getElementById("create-field");
+console.log('====================================');
+console.log(createField.name);
+console.log(createField.tabIndex);
+console.log('====================================');
+document.getElementById("create-form").addEventListener("submit", function (e) {
+    e.preventDefault();
+    axios
+        .post("/create-item", { reja: createField.value })
+        .then((response) => {
+            document
+                .getElementById("item-list")
+                .insertAdjacentHTML("beforeend", itemTemplate(response.data))
+            createField.value = "";
+            createField.focus();
+        })
+
+        .catch((err) => {
+            console.log("Try again");
+        })
 });
 
 
 document.addEventListener("click", function (e) {
-    // delete operation
-    console.log(e.target);
+    //delete oper
+
+    console.log("button id", e.target);
+
+
     if (e.target.classList.contains("delete-me")) {
-        // alert("siz delete tugmasini bosdingiz");
-        if (confirm("Rostdan ham bu rejani o'chirmoqchimisiz?")) {
-        //     alert("Ha deb javob berdingiz, bu rejani o'chirasiz");
-        // } else {
-        //     alert("Yo'q deb javob berdingiz, bu rejani o'chirmaysiz");
-        // }
-        axios.post("/delete-item", { id: e.target.getAttribute("data-id") })
-            .then(function (response) {
-                e.target.parentElement.parentElement.remove();
-            })
-            .catch(function (err) {
-                console.log("Iltimos, keyinroq qayta urinib ko'ring!");
-            });
+        if (confirm("Are you sure to DELETE?")) {
+            axios.post("/delete-item", { id: e.target.getAttribute("data-id") })
+                .then((response) => {
+                    console.log(response.data);
+                    e.target.parentElement.parentElement.remove();
+                })
+                .catch((err) => {
+                    console.log("Please Try Again!!!")
+                });
+
+            // alert("You pressed YES")
         }
+        // else {
+        //     alert("You pressed NO")
+        // }
+    }
+    //edit oper
+
+
+
+    if (e.target.classList.contains("edit-me")) {
+        // console.log(1);
+        // let userInput = prompt("You can edit now...", "edit please...");
+        let userInput = prompt(
+            "You can edit now...",
+            e.target.parentElement.parentElement.querySelector(".item-text").innerHTML);
+        // console.log(2)
+
+        if (userInput) {
+            axios.post("/edit-item", { id: e.target.getAttribute("data-id"), new_input: userInput })
+                .then((response) => {
+                    console.log(response.data);
+                    e.target.parentElement.parentElement.querySelector(".item-text").innerHTML = userInput
+                })
+                .catch((err) => {
+                    console.log("Please try again...");
+                })
+            // console.log(userInput);
+        }
+
+        // alert("You are going to EDIT")
     }
 
-    // edit operation
-    if (e.target.classList.contains("edit-me")) {
-        alert("siz edit tugmasini bosdingiz");
-    }
-});
-        
+    // console.log('====================================');
+    // console.log(e);
+    // console.log('====================================');
+})
+
+document.getElementById("clean-all").addEventListener("click", function () {
+    axios.post("/delete-all", { delete_all: true }).then((response) => {
+        alert(response.data.state);
+        document.location.reload();
+    })
+})
