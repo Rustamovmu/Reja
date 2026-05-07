@@ -1,3 +1,25 @@
+// TASK E
+
+// Shunday function tuzing, u bitta string argumentini qabul qilib,
+//  qabul qilingan stringni teskari ko'rinishda return qilsin.
+
+// Masalan: getReverse("hello") return "olleh"
+function getReverse(a) {
+    const b = a.split("").reverse().join("")
+    return b;
+}
+
+const a = getReverse("hello");
+console.log(a);
+
+
+
+
+
+
+
+
+
 // TASK D
 
 // Ikkita parametra ega function tuzing, va functioning berilgan birinchi va 
@@ -5,17 +27,17 @@
 
 // Masalan: checkContent("mitgroup", "gmtiprou") return true
 
-function checkContent(str1, str2) {
+// function checkContent(str1, str2) {
    
-    const sortedStr1 = str1.split("").sort().join("");
-    const sortedStr2 = str2.split("").sort().join("");
-    if  (sortedStr1 === sortedStr2) return true; 
-    else return false;
+//     const sortedStr1 = str1.split("").sort().join("");
+//     const sortedStr2 = str2.split("").sort().join("");
+//     if  (sortedStr1 === sortedStr2) return true; 
+//     else return false;
         
-}
+// }
 
-const a = checkContent("mitgroup", "gmtiprou");
-console.log(a)
+// const a = checkContent("mitgroup", "gmtiprou");
+// console.log(a)
 
 
 
