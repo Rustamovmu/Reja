@@ -84,7 +84,7 @@ app.get("/", function (req, res) {
             console.log("Error fetching plans:", err);
             res.end("something went wrong");
         } else {
-            res.render("Reja", {
+            res.render("reja", {
                 items: data
             });
         }
