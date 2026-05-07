@@ -1,7 +1,7 @@
 console.log("web Serverni boshlash");
 const express = require("express");
 const app = express();
-const PORT = 3000;
+const PORT = 3005;
 const fs = require("fs");
 // const { connect } = require("http2");
 
