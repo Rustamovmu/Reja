@@ -1,16 +1,35 @@
+// TASK F
+
+// Yagona string argumentga ega findDoublers nomli function tuzing.
+//  Agar stringda bittadan ortiq bir xil harflar ishtirok etgan bo'lsa true yokida false natija qaytarsin.
+
+// Masalan: findDoublers("hello") return true
+
+function findDoublers(a) {
+   for (let i = 0; i < a.length; i++) {
+       for (let j = i + 1; j < a.length; j++) {
+           if (a[i] === a[j]) return true;
+       }
+   }
+   return false;
+}
+const word = findDoublers("hello");
+console.log(word)
+
+
 // TASK E
 
 // Shunday function tuzing, u bitta string argumentini qabul qilib,
 //  qabul qilingan stringni teskari ko'rinishda return qilsin.
 
 // Masalan: getReverse("hello") return "olleh"
-function getReverse(a) {
-    const b = a.split("").reverse().join("")
-    return b;
-}
+// function getReverse(a) {
+//     const b = a.split("").reverse().join("")
+//     return b;
+// }
 
-const a = getReverse("hello");
-console.log(a);
+// const a = getReverse("hello");
+// console.log(a);
 
 
 
