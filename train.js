@@ -1,3 +1,22 @@
+// TASK G
+
+// Yagona parametrga ega function tuzing. 
+// Array tarkibidagi birinchi eng katta qiymatning indeksini qaytarsin.
+
+// Masalan: getHighestIndex([5, 21, 12, 21, 8]) return 1
+
+function getHighestIndex(a) {
+    let highestIndex = 0;
+    for(i = 0; i < a.length; i++){
+        if(a[i] > a[highestIndex]){
+            highestIndex = i;
+        }
+    }
+    return highestIndex;
+}
+
+console.log(getHighestIndex([5, 21, 12, 212, 8]))
+
 // TASK F
 
 // Yagona string argumentga ega findDoublers nomli function tuzing.
@@ -5,16 +24,16 @@
 
 // Masalan: findDoublers("hello") return true
 
-function findDoublers(a) {
-   for (let i = 0; i < a.length; i++) {
-       for (let j = i + 1; j < a.length; j++) {
-           if (a[i] === a[j]) return true;
-       }
-   }
-   return false;
-}
-const word = findDoublers("hello");
-console.log(word)
+// function findDoublers(a) {
+//    for (let i = 0; i < a.length; i++) {
+//        for (let j = i + 1; j < a.length; j++) {
+//            if (a[i] === a[j]) return true;
+//        }
+//    }
+//    return false;
+// }
+// const word = findDoublers("hello");
+// console.log(word)
 
 
 // TASK E
