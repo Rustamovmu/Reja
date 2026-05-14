@@ -1,3 +1,21 @@
+// TASK H
+
+// Integerlardan iborat arrayni qabul qilib, faqatgina
+//  positive sonlarni olib string holatida return qilsin.
+
+// Masalan: getPositive([1, -4, 2]) return "12"
+
+function getPositive(arr) {
+    let positiveNumbers = [];
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] > 0) {
+            positiveNumbers.push(arr[i]);
+        }
+    }
+    return positiveNumbers.join("");
+}
+console.log(getPositive([1, -4, 2]));
+
 // TASK G
 
 // Yagona parametrga ega function tuzing. 
@@ -5,17 +23,17 @@
 
 // Masalan: getHighestIndex([5, 21, 12, 21, 8]) return 1
 
-function getHighestIndex(a) {
-    let highestIndex = 0;
-    for(i = 0; i < a.length; i++){
-        if(a[i] > a[highestIndex]){
-            highestIndex = i;
-        }
-    }
-    return highestIndex;
-}
+// function getHighestIndex(a) {
+//     let highestIndex = 0;
+//     for(i = 0; i < a.length; i++){
+//         if(a[i] > a[highestIndex]){
+//             highestIndex = i;
+//         }
+//     }
+//     return highestIndex;
+// }
 
-console.log(getHighestIndex([5, 21, 12, 212, 8]))
+// console.log(getHighestIndex([5, 21, 12, 212, 8]))
 
 // TASK F
 
