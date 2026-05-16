@@ -1,3 +1,33 @@
+// TASK I
+
+// Array ichida eng ko'p takrorlangan raqamni topib qaytarsin.
+
+// Masalan: majorityElement([1, 2, 3, 4, 5, 4, 3, 4]) return 4
+function majorityElement(arr) {
+    let maxCount = 0;
+    let result = null;
+
+    for (let i = 0; i < arr.length; i++) {
+        let count = 0;
+
+        for (let j = 0; j < arr.length; j++) {
+            if (arr[i] === arr[j]) {
+                count++;
+            }
+        }
+
+        if (count > maxCount) {
+            maxCount = count;
+            result = arr[i];
+        }
+    }
+
+    return result;
+}
+
+console.log(majorityElement([1, 2, 3, 4, 5, 4, 3, 4]))
+
+
 // TASK H
 
 // Integerlardan iborat arrayni qabul qilib, faqatgina
@@ -5,16 +35,16 @@
 
 // Masalan: getPositive([1, -4, 2]) return "12"
 
-function getPositive(arr) {
-    let positiveNumbers = [];
-    for (let i = 0; i < arr.length; i++) {
-        if (arr[i] > 0) {
-            positiveNumbers.push(arr[i]);
-        }
-    }
-    return positiveNumbers.join("");
-}
-console.log(getPositive([1, -4, 2]));
+// function getPositive(arr) {
+//     let positiveNumbers = [];
+//     for (let i = 0; i < arr.length; i++) {
+//         if (arr[i] > 0) {
+//             positiveNumbers.push(arr[i]);
+//         }
+//     }
+//     return positiveNumbers.join("");
+// }
+// console.log(getPositive([1, -4, 2]));
 
 // TASK G
 
